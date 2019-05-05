@@ -5,17 +5,17 @@ services:
 before_install:
   - docker build -t henryszecy/react-test -f  ./client/dev.Dockerfile ./client
 
-  
+
 script:
   - docker run -e CI=true henryszecy/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t henryszecy/multi-client ./client
-  - docker build -t henryszecy/multi-nginx ./nginx
-  - docker build -t henryszecy/multi-server ./server
-  - docker build -t henryszecy/multi-worker ./worker
+  - docker build -t henrysze/multi-client ./client
+  - docker build -t henrysze/multi-nginx ./nginx
+  - docker build -t henrysze/multi-server ./server
+  - docker build -t henrysze/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push henryszecy/multi-client:latest
-  - docker push henryszecy/multi-nginx:latest
-  - docker push henryszecy/multi-server:latest
-  - docker push henryszecy/multi-worker:latest
+  - docker push henrysze/multi-client:latest
+  - docker push henrysze/multi-nginx:latest
+  - docker push henrysze/multi-server:latest
+  - docker push henrysze/multi-worker:latest
