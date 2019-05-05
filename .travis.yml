@@ -14,7 +14,7 @@ after_success:
   - docker build -t henryszecy/multi-server ./server
   - docker build -t henryszecy/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push henrysze/henrysze:henryszecy/multi-client
-  - docker push henrysze/henrysze:henryszecy/multi-nginx
-  - docker push henrysze/henrysze:henryszecy/multi-server
-  - docker push henrysze/henrysze:henryszecy/multi-worker  
+  - docker push henryszecy/multi-client
+  - docker push henryszecy/multi-nginx
+  - docker push henryszecy/multi-server
+  - docker push henryszecy/multi-worker  
