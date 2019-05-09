@@ -3,22 +3,35 @@
     "containerDefinitions" : [
         {
             "name": "client",
-            "image": "henryszecy/multi-client",
+            "image": "henrysze/multi-client",
             "hostname": "client",
             "essential": false
         },
         {
             "name": "server",
-            "image": "henryszecy/multi-server",
+            "image": "henrysze/multi-server",
             "hostname": "api",
             "essential": false
         },
         {
             "name": "worker",
-            "image": "henryszecy/multi-worker",
+            "image": "henrysze/multi-worker",
             "hostname": "worker",
             "essential": false
-        }                
+        } ,
+        {
+            "name": "nginx",
+            "image": "henrysze/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links" : ["client","server"]
+        }                 
 
     ]
 }
